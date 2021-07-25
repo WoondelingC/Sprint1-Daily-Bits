@@ -1,0 +1,54 @@
+
+.imagen{
+    border: 10px solid white;
+}
+.completo{
+    border: 10px solid rgb(31, 168, 31);
+}
+.correcta{
+    border: 2px solid green;
+}
+.incorrecta{
+    border: 2px solid red;
+}
+.sinProgreso{
+    width: 0%;
+}
+.progreso{
+    background-color: green;
+    width: 20%;
+}
+.animacion{
+    transition: all 1s ease .3s;
+}
+
+/*pregunta 4*/
+#sel1::before{
+    content: '<DOCTYPE html>';
+}
+#sel2::before{
+    content: '<body> </body>';
+}
+#sel3::before{
+    content: '<head> </head>';
+}
+#sel4::before{
+    content: '<html>';
+}
+#sel5::before{
+    content: '</html>';
+}  
+
+/*pregunta 2*/
+#cont1::before{
+    content: '<script>';
+    color: white;
+}
+#cont2::before{
+    content: '<br>';
+    color: white;
+}
+#cont3::before{
+    content: '<style>';
+    color: white;
+}
