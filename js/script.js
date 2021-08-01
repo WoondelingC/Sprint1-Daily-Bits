@@ -1,9 +1,6 @@
 const opc = document.querySelectorAll('.opc');
 const respuestas = document.querySelectorAll('.respuestas');
 const boton1 = document.getElementById('botonC');
-var acertada = document.querySelector('acertada');
-var fallida = document.querySelector('.fallida');
-let fallos = 0;
 
 //barra de Progreso
 let avance = ()=>
@@ -23,7 +20,7 @@ function sinProgreso(){
 
 }
 
-
+console.log(opc);
     opc.forEach(function(item){
 
     item.addEventListener('click',(e)=>{
@@ -35,9 +32,7 @@ function sinProgreso(){
         avance();
         siguiente(); 
         estadistica();
-        acertadas ++;
-       
-
+    
     })
 
     }else if(e.target==opc[1]){
@@ -46,8 +41,7 @@ function sinProgreso(){
         boton1.addEventListener ('click',function(){
             sinProgreso();
             siguiente();
-            fallos ++;
-            estadistica();
+            estadisticaNegativa();
             
         })
 
@@ -58,7 +52,7 @@ function sinProgreso(){
             boton1.style.backgroundColor = '#8a2be2';
             sinProgreso();
             siguiente();
-            fallos ++;
+            estadisticaNegativa();
 
         })
         
@@ -67,11 +61,98 @@ function sinProgreso(){
 
 })
 
-function estadistica (){
-    let acertadas = 0;
-    localStorage.setItem('respuestasC',acertadas);
-}
+/*se guarda en local storage las acertadas y se crea una funcion que me las sume*/ 
+
+    let acertada = document.querySelector('.acertada');
+
+    correct =  0 ;
+
+    if(localStorage.getItem('acertada')===null){  
     
+    localStorage.setItem('acertada', correct);
+    }
+    
+    let acertada_Storage = JSON.parse(localStorage.getItem('acertada'));
+    console.log(JSON.parse(localStorage.getItem('acertada')))
+     
+    window.onload = function() {
+
+        what();
+
+        function what() {
+            document.querySelector('.acertada').innerHTML;
+            acertada.innerHTML = `<span>${acertada_Storage}</span>`;
+        };
+
+    }
+    
+    
+    
+    function estadistica(){
+        
+         if(localStorage.getItem('acertada'))
+         {
+                c = acertada_Storage = acertada_Storage + 1;
+    
+            
+                localStorage.setItem('acertada', JSON.stringify(c));
+    
+                let acertada_Storage2 = JSON.parse(localStorage.getItem('acertada'));
+    
+                acertada.innerHTML = ``;
+                acertada.innerHTML = `<span>${acertada_Storage2}</span>`;
+    
+            }
+        
+    };
+    console.log(acertada.innerHTML);
+
+    //se guarda las respuestas fallidas y se crea funcion para sumar y mostrarlas en estadisticas
+
+    let fallida = document.querySelector('.fallida');
+
+    incorrect = 0;
+
+    if(localStorage.getItem('fallida')===null){  
+    
+        localStorage.setItem('fallida', JSON.stringify(incorrect));
+        }
+        
+        let fallida_Storage1 = JSON.parse(localStorage.getItem('fallida'));
+        console.log(JSON.parse(localStorage.getItem('fallida')))
+        
+        
+        window.onload = function() {
+
+            faile();
+    
+            function faile() {
+                fallida.innerHTML;
+                fallida.innerHTML = `<span>${fallida_Storage1}</span>`;
+            };
+    
+        }
+        
+        
+        function estadisticaNegativa(){
+            
+                if(localStorage.getItem('fallida'))
+                {
+                    i = fallida_Storage1 = fallida_Storage1 + 1;
+        
+                
+                    localStorage.setItem('fallida', JSON.stringify(i));
+        
+                    let fallida_Storage2 = JSON.parse(localStorage.getItem('fallida'));
+        
+                    fallida.innerHTML = ``;
+                    fallida.innerHTML = `<span>${fallida_Storage2}</span>`;
+        
+                }
+                
+        };
+
+
     
 
 //pasar a la siguiente ventana
@@ -114,7 +195,7 @@ localStorage.setItem('vidas', JSON.stringify(cont));
 
 let vidas_Storage = JSON.parse(localStorage.getItem('vidas'));
 console.log(JSON.parse(localStorage.getItem('vidas')))
-    vidas.innerHTML = ``;
+    vidas.innerHTML;
     vidas.innerHTML = `<p>${vidas_Storage}</p>`;
 
 
