@@ -11,7 +11,6 @@ let avance = ()=>
 
 }
 
-
 function sinProgreso(){
     document.querySelector('.avc').classList.toggle ('sinProgreso');
     boton1.style.backgroundColor = 'red';
@@ -74,24 +73,15 @@ console.log(opc);
     
     let acertada_Storage = JSON.parse(localStorage.getItem('acertada'));
     console.log(JSON.parse(localStorage.getItem('acertada')))
-     
-    window.onload = function() {
-
-        what();
-
-        function what() {
-            document.querySelector('.acertada').innerHTML;
-            acertada.innerHTML = `<span>${acertada_Storage}</span>`;
-        };
-
-    }
     
+        acertada.innerHTML;
+        acertada.innerHTML = `<span>${acertada_Storage}</span>`;
     
     
     function estadistica(){
         
-         if(localStorage.getItem('acertada'))
-         {
+        if(localStorage.getItem('acertada'))
+        {
                 c = acertada_Storage = acertada_Storage + 1;
     
             
@@ -120,18 +110,9 @@ console.log(opc);
         
         let fallida_Storage1 = JSON.parse(localStorage.getItem('fallida'));
         console.log(JSON.parse(localStorage.getItem('fallida')))
-        
-        
-        window.onload = function() {
-
-            faile();
     
-            function faile() {
-                fallida.innerHTML;
-                fallida.innerHTML = `<span>${fallida_Storage1}</span>`;
-            };
-    
-        }
+            fallida.innerHTML;
+            fallida.innerHTML = `<span>${fallida_Storage1}</span>`;
         
         
         function estadisticaNegativa(){
@@ -185,7 +166,7 @@ function siguiente (){
 
 
 //estado de las vidas guardo en localstorage y si la respuesta es incorrecta me resto vida
-let vidas = document.querySelector('.vidas');
+const vidas = document.querySelector('.vidas');
 
 cont =  4 ;
 if(localStorage.getItem('vidas')===null){  
@@ -193,7 +174,7 @@ if(localStorage.getItem('vidas')===null){
 localStorage.setItem('vidas', JSON.stringify(cont));
 }
 
-let vidas_Storage = JSON.parse(localStorage.getItem('vidas'));
+var vidas_Storage = JSON.parse(localStorage.getItem('vidas'));
 console.log(JSON.parse(localStorage.getItem('vidas')))
     vidas.innerHTML;
     vidas.innerHTML = `<p>${vidas_Storage}</p>`;
@@ -204,6 +185,7 @@ function oportunidades(){
     boton1.addEventListener('click', function (){
         if(localStorage.getItem('vidas'))
         {
+            
             v = vidas_Storage = vidas_Storage - 1;
 
         
@@ -211,8 +193,9 @@ function oportunidades(){
 
             let vidas_Storage2 = JSON.parse(localStorage.getItem('vidas'));
 
-            vidas.innerHTML = ``;
+            vidas.innerHTML;
             vidas.innerHTML = `<p>${vidas_Storage2}</p>`;
+
             if(v<=0){
                 localStorage.removeItem('vidas');
             }
@@ -222,14 +205,3 @@ function oportunidades(){
         
     })
 };
-
-
-
-
-
-
-
-
-    
-
-
